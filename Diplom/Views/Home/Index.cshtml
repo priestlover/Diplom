@@ -4,35 +4,12 @@
 @model List<MainPageGame>
 
 <div class="text-start" style="height:100%">
-    <div style="padding-top: 40px">
+    <div style="padding-top: 40px; padding-bottom: 40px">
         <h1>Купить ключи игр Steam для ПК</h1>
     </div>
-    <div style="padding-top: 40px">
-    <ul class="nav nav-tabs mb-3" id="ex1" role="tablist">
-        <li class="nav-item" role="presentation">
-            <a class="nav-link active "
-               id="ex1-tab-1"
-               data-bs-toggle="tab"
-               href="#ex1-tabs-1"
-               role="tab"
-               aria-controls="ex1-tabs-1"
-               aria-selected="true">Популярные</a>
-        </li>
-        <li class="nav-item" role="presentation">
-            <a class="nav-link"
-               id="ex1-tab-2"
-               data-bs-toggle="tab"
-               href="#ex1-tabs-2"
-               role="tab"
-               aria-controls="ex1-tabs-2"
-               aria-selected="false">Новинки</a>
-        </li>
-    </ul>
-    <div class="tab-content" id="ex1-content">
-        <div class="tab-panel fade show active" id="ex1-tabs-1" role="tabpanel" aria-labelledby="ex1-tab-1">
+        <div class="fade show active">
                 @for(int i = 0; i < (Model.Count / 4); i++)
                 {
-
                     <div class="card-group" style=" margin-bottom: 50px;">
 
                         <div class="card">
@@ -90,14 +67,8 @@
                                 <h4 class="card-text">@Model[3 + i * 4].Price ₽</h4>
                             </div>
                         </div>
-                        </div>
+                    </div>
                 }
-
-        </div>
-        <div class="tab-pane fade" id="ex1-tabs-2" role="tabpanel" aria-labelledby="ex1-tab-2">
         </div>
     </div>
-</div>
- 
 
-</div>

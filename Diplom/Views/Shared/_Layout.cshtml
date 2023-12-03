@@ -13,12 +13,12 @@
         <div class="container">
             <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
                 <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
-                    <img src="img/logo/logo.svg" width="70" height="50" alt="Магазин игр Bebra" />
+                    <img src="~/img/logo/logo.svg" width="70" height="50"/>
                 </a>
                 <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                    <li><a href="/" class="nav-link px-2 text-black">Главная</a></li>
-                    <li><a href="/search" class="nav-link px-2 text-black">Каталог игр</a></li>
-                    <li><a href="/reviews" class="nav-link px-2 text-black">Отзывы</a></li>
+                    <li><a class="nav-link px-2 text-black" asp-controller="Home" asp-action="Index">Главная</a></li>
+                    <li><a class="nav-link px-2 text-black" asp-controller="Search" asp-action="Search">Каталог игр</a></li>
+                    <li><a class="nav-link px-2 text-black" asp-controller="Reviews" asp-action="Reviews">Отзывы</a></li>
                 </ul>
 
                 <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
@@ -26,8 +26,12 @@
                 </form>
 
                 <div class="text-end">
-                    <button type="button" class="btn btn-outline-dark me-2">Login</button>
-                    <button type="button" class="btn btn-outline-dark">Sign-up</button>
+                    <button href="/Login" type="button" class="btn btn-outline-dark me-2">
+                        <a class="px-2 text-black" style="text-decoration:none" asp-controller="Login" asp-action="Login">Login</a>
+                    </button>
+                    <button href="/SignUp" type="button" class="btn btn-outline-dark">
+                        <a class="px-2 text-black" style="text-decoration:none" asp-controller="SignUp" asp-action="SignUp">Sign Up</a>
+                    </button>
                 </div>
             </div>
         </div>

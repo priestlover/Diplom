@@ -1,6 +1,7 @@
-﻿using Diplom.ForDb;
+﻿using Diplom.AppDbContext;
 using Diplom.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
 
 namespace Diplom.Controllers
@@ -8,17 +9,17 @@ namespace Diplom.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private readonly MyDbContext _dbContext;
+        private readonly ApplicationDbContext _context;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, ApplicationDbContext contex)
         {
             _logger = logger;
-            _dbContext = new MyDbContext();
+            _context = contex;
         }
 
         public IActionResult Index()
         {
-            return View(_dbContext.MainPageGames.ToList());
+            return View(_context.MainPageGames.ToList());
         }
 
         public IActionResult Privacy()
