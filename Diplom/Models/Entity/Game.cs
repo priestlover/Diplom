@@ -1,15 +1,14 @@
-﻿namespace Diplom.Models
+﻿namespace Diplom.Models.Entity
 {
-    public class MainPageGame
+    public class Game
     {
         public int Id { get; set; }
         public string Name { get; set; }
         public int Price { get; set; }
         public string ImgSource { get; set; }
         public DateTime Date { get; set; }
-        public bool Popular { get; set; }
 
-
+        public GameDescription GameDescription { get; set; }
 
     }
 }

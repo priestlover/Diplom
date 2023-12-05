@@ -1,8 +1,12 @@
-﻿namespace Diplom.Models.Authorization
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Diplom.Models.Authorization
 {
-    public class Role
+    public enum Role
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
+        [Display(Name = "Пользователь")]
+        User = 0,
+        [Display(Name = "Админ")]
+        Admin = 1
     }
 }

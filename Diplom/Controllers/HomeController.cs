@@ -1,4 +1,4 @@
-﻿using Diplom.AppDbContext;
+﻿ using Diplom.AppDbContext;
 using Diplom.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -11,15 +11,15 @@ namespace Diplom.Controllers
         private readonly ILogger<HomeController> _logger;
         private readonly ApplicationDbContext _context;
 
-        public HomeController(ILogger<HomeController> logger, ApplicationDbContext contex)
+        public HomeController(ILogger<HomeController> logger, ApplicationDbContext context)
         {
             _logger = logger;
-            _context = contex;
+            _context = context;
         }
 
         public IActionResult Index()
         {
-            return View(_context.MainPageGames.ToList());
+            return View(_context.Games.ToList());
         }
 
         public IActionResult Privacy()

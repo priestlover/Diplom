@@ -18,8 +18,4 @@
     <PackageReference Include="NLog.Web" Version="5.3.5" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Views\Login\" />
-  </ItemGroup>
-
 </Project>
