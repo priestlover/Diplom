@@ -4,9 +4,6 @@ namespace Diplom.Controllers
 {
     public class ReviewsController : Controller
     {
-        public IActionResult Reviews()
-        {
-            return View();
-        }
+        public IActionResult Reviews() => View();
     }
 }
