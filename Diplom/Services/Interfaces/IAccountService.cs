@@ -8,7 +8,7 @@ namespace Diplom.Services.Interfaces
 {
     public interface IAccountService
     {
-        Task<BaseResponse<ClaimsIdentity>> Register(SignUpViewModel model);
+        Task<BaseResponse<ClaimsIdentity>> Register(RegisterViewModel model);
 
         Task<BaseResponse<ClaimsIdentity>> Login(LoginViewModel model);
     }

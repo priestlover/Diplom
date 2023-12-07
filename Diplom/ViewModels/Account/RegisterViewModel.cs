@@ -2,7 +2,7 @@
 
 namespace Diplom.ViewModels.Account
 {
-    public class SignUpViewModel
+    public class RegisterViewModel
     {
         [Required(ErrorMessage ="Укажите логин")]
         [MaxLength(20, ErrorMessage = "Имя должно иметь длину меньше 20 символов")]

@@ -18,10 +18,10 @@ namespace Diplom.Controllers
         }
 
         [HttpGet]
-        public IActionResult SignUp() => View();
+        public IActionResult Register() => View();
 
         [HttpPost]
-        public async Task<IActionResult> SignUp(SignUpViewModel model)
+        public async Task<IActionResult> Register(RegisterViewModel model)
         {
             if (ModelState.IsValid)
             {

@@ -30,7 +30,6 @@ namespace Diplom.AppDbContext
                     {
                         Id = 1,
                         Name = "admin",
-                        Email = "admin@mail.ru",
                         Password = HashPasswordHelper.HashPassword("bebra"),
                         Role = Role.Admin
                     },
@@ -38,7 +37,6 @@ namespace Diplom.AppDbContext
                     {
                         Id = 2,
                         Name = "testUser",
-                        Email = "user@mail.ru",
                         Password = HashPasswordHelper.HashPassword("12345"),
                         Role = Role.User
                     }
