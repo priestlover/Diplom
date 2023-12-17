@@ -4,6 +4,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Diplom</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
+    <link href="https://raw.githack.com/ttskch/select2-bootstrap4-theme/master/dist/select2-bootstrap4.css" rel="stylesheet">
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/Diplom.styles.css" asp-append-version="true" />
@@ -20,19 +22,39 @@
                     <li><a class="nav-link px-2 text-black" asp-controller="Search" asp-action="Search">Каталог игр</a></li>
                     <li><a class="nav-link px-2 text-black" asp-controller="Reviews" asp-action="Reviews">Отзывы</a></li>
                 </ul>
-
+                @if(User.IsInRole("Admin")){
+                    <div class="text-end">
+                        <button href="/Admin" type="button" class="btn btn-outline-dark me-2">
+                            <a class="px-2 text-black" style="text-decoration:none" asp-controller="Admin" asp-action="Admin">Админка</a>
+                        </button>
+                    </div>
+                }
                 <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
                     <input type="search" class="form-control form-control-dark" placeholder="Search..." aria-label="Search">
                 </form>
-
-                <div class="text-end">
-                    <button href="/Login" type="button" class="btn btn-outline-dark me-2">
-                        <a class="px-2 text-black" style="text-decoration:none" asp-controller="Account" asp-action="Login">Login</a>
-                    </button>
-                    <button  type="button" class="btn btn-outline-dark">
-                        <a class="px-2 text-black" style="text-decoration:none" asp-controller="Account" asp-action="Register">Register</a>
-                    </button>
-                </div>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <div class="text-end">
+                        <button href="/Profile" type="button" class="btn btn-outline-dark me-2">
+                            <a class="px-2 text-black" style="text-decoration:none" asp-controller="Home" asp-action="Index">Личный кабинет</a>
+                        </button>
+                     </div>
+                   
+                    <form method="post" asp-controller="Account" asp-action="Logout">
+                        <input class="btn btn-outline-dark me-2" type="submit" value="Выход" />
+                    </form>
+                }
+                else
+                {
+                    <div class="text-end">
+                        <button href="/Login" type="button" class="btn btn-outline-dark me-2">
+                            <a class="px-2 text-black" style="text-decoration:none" asp-controller="Account" asp-action="Login">Войти</a>
+                        </button>
+                        <button  type="button" class="btn btn-outline-dark">
+                            <a class="px-2 text-black" style="text-decoration:none" asp-controller="Account" asp-action="Register">Зарегестрироваться</a>
+                        </button>
+                    </div>
+                }
             </div>
         </div>
     </header>
@@ -47,9 +69,12 @@
             &copy; 2023 - Diplom - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
-    @await RenderSectionAsync("Scripts", required: false)
+    <script src="~/js/modal.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+    @await RenderSectionAsync("pageScripts", required: false)
 </body>
 </html>

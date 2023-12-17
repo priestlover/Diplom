@@ -13,7 +13,5 @@ namespace Diplom.Models.Authorization
 
         public Basket Basket { get; set; }
 
-
-
     }
 }

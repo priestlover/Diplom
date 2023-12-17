@@ -45,10 +45,5 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
-app.MapControllerRoute(
-        name: "Search",
-        pattern: "{controller=Search}/{action=Search}/{id?}");
-app.MapControllerRoute(
-    name: "Reviews",
-    pattern: "{controller=Reviews}/{action=Reviews}/{id?}");
+
 app.Run();
