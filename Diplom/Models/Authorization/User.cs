@@ -12,6 +12,5 @@ namespace Diplom.Models.Authorization
         public Role Role { get; set; }
 
         public Basket Basket { get; set; }
-
     }
 }

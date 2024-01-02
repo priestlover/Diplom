@@ -11,5 +11,6 @@ namespace Diplom.Models.Entity
         public User User { get; set; }
 
         public List<Order> Orders { get; set; }
+
     }
 }
