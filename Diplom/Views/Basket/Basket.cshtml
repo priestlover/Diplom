@@ -3,14 +3,32 @@
     ViewData["Title"] = "Basket";
 }
 
-
+<div class="row">
+    <div class="col">
 @foreach(var game in Model)
 {
-    <div>
-        <tr>
-            <td>@game.Price </td>
-            <td>@game.Name </td>
-            <td>@game.CreatedDate </td>
-        </tr>
+    <div class="card mb-7" style="max-width: 400px; margin-top:50px">
+        <div class="row g-0">
+            <div class="col-md-4">
+                <img src="@game.ImgSource" class="img-fluid rounded-start" alt="...">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title">@game.Name</h5>
+                    <h4 class="card-text">@game.Price ₽ </h4>
+                    <p class="card-text"><small class="text-muted">Дата заказа:  @game.CreatedDate.Value.ToShortTimeString() @game.CreatedDate.Value.ToShortDateString()</small></p>
+                    <button type="button" class="btn btn-outline-danger" >
+                        <a class="px-2 text-black" style="text-decoration:none" asp-controller="Basket" asp-action="DeleteOrder" asp-route-id="@game.Id">Удалить</a>
+                    </button>
+                </div>
+            </div>
+        </div>
     </div>
 }
+    </div>
+    <div class="col" style="padding-top:40px">
+
+        <h1>Bebra</h1>
+    </div>
+
+</div>

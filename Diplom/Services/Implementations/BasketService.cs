@@ -73,7 +73,7 @@ namespace Diplom.Services.Implementations
                                join g in _gameRepository.GetAll() on o.GameId equals g.Id
                                select new OrderViewModel()
                                {
-                                   Id = g.Id,
+                                   Id = o.Id,
                                    Name = g.Name,
                                    ImgSource = g.ImgSource,
                                    CreatedDate = o.CreatedDate,
