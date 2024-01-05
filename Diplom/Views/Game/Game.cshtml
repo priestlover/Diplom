@@ -3,5 +3,47 @@
     ViewData["Title"] = "View";
 }
 
-<h1>@Model.Name</h1>
 
+    <div class="container" style="padding-top: 50px">
+       
+        <div class="row">
+          <div class="col">
+            <div class="text-center" style="padding-top: 15px" >
+                <a>
+                    <img src="@Model.ImgSource" class="rounded mycard" alt="..." style="height: 400px; width:290px">
+                </a>
+            </div>
+          </div>
+        
+        <div class="col" >
+            <div style="margin-bottom: 100px">
+                <h1>@Model.Name</h1>
+                <p>Дата выпуска: @Model.Date.ToShortDateString()</p>
+            </div>
+            <div class="row" >
+                <div class="col-4 ">
+                    <h2>@Model.Price ₽</h2>
+                </div>
+                <div class="col-2 ">
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <button type="button" class="btn btn-success" style="width:150px">
+                            <a class="px-2 text-white" style="text-decoration:none" asp-controller="Game" asp-action="AddToBasket" asp-route-id="@Model.Id">   В корзину   </a>
+                        </button>
+                    }
+                    else
+                    {
+                        <button type="button" class="btn btn-danger" style="width:150px" asp-controller="Account" asp-action="Login">
+                            <a class="px-2 text-white" style="text-decoration:none" asp-controller="Account" asp-action="Login">Войдите в аккаунт</a>
+                         </button>
+                    }
+                </div>
+            </div>
+         </div>
+        </div>
+        <div class="text-center" style="padding-top:50px">
+            <h1>Описание</h1>
+            @Model.Description
+        </div>
+
+    </div>

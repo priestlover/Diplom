@@ -1,0 +1,16 @@
+﻿@model List<Diplom.ViewModels.OrderViewModel>
+@{
+    ViewData["Title"] = "Basket";
+}
+
+
+@foreach(var game in Model)
+{
+    <div>
+        <tr>
+            <td>@game.Price </td>
+            <td>@game.Name </td>
+            <td>@game.CreatedDate </td>
+        </tr>
+    </div>
+}

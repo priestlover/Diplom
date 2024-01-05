@@ -13,15 +13,17 @@ namespace Diplom.Services.Implementations
         private readonly IBaseRepository<User> _userRepository;
         private readonly IBaseRepository<GameDescription> _gameDescRepository;
         private readonly IBaseRepository<Order> _orderRepository;
+        private readonly IBaseRepository<Basket> _basketRepository;
         private readonly ILogger<GameService> _logger;
 
-        public GameService(IBaseRepository<Game> gameRepository,IBaseRepository<User> userRepository,
+        public GameService(IBaseRepository<Game> gameRepository,IBaseRepository<User> userRepository,IBaseRepository<Basket> basketRepository,
             IBaseRepository<GameDescription> gameDesc,IBaseRepository<Order> orderRepository,ILogger<GameService> logger) 
         {
             _gameRepository = gameRepository;
             _userRepository = userRepository;
             _gameDescRepository = gameDesc;
             _orderRepository = orderRepository;
+            _basketRepository = basketRepository;
             _logger = logger;
         }
 
@@ -30,12 +32,13 @@ namespace Diplom.Services.Implementations
             try
             {
                 var user = await _userRepository.GetAll().FirstOrDefaultAsync(x => x.Name == userName);
+                var basket = await _basketRepository.GetAll().FirstOrDefaultAsync(x => x.UserId == user.Id);
 
                 var order = new Order
                 {
                     CreatedDate = DateTime.Now,
                     GameId = gameId,
-                    BasketId = user.Basket.Id
+                    BasketId = basket.Id
                 };
 
                 await _orderRepository.Create(order);
