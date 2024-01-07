@@ -25,6 +25,7 @@ namespace Diplom
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IGameService, GameService>();
             services.AddScoped<IBasketService, BasketService>();
+            services.AddScoped<ISearchService, SearchService>();
         }
     }
 }

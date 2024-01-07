@@ -19,8 +19,7 @@
                 </a>
                 <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
                     <li><a class="nav-link px-2 text-black" asp-controller="Home" asp-action="Index">Главная</a></li>
-                    <li><a class="nav-link px-2 text-black" asp-controller="Search" asp-action="Search">Каталог игр</a></li>
-                    <li><a class="nav-link px-2 text-black" asp-controller="Reviews" asp-action="Reviews">Отзывы</a></li>
+                    <li><a class="nav-link px-2 text-black" asp-controller="Search" asp-action="Catalog">Каталог игр</a></li>
                 </ul>
                 @if(User.IsInRole("Admin")){
                     <div class="text-end">
@@ -29,9 +28,13 @@
                         </button>
                     </div>
                 }
-                <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
-                    <input type="search" class="form-control form-control-dark" placeholder="Search..." aria-label="Search">
-                </form>
+                <div style="margin-right:20px">
+                     <form asp-controller="Search" asp-action="Search" method="get">
+                        <input type="search" name="searchStr" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+                        
+                     </form>
+                 </div>
+
                 @if (User.Identity.IsAuthenticated)
                 {
                     

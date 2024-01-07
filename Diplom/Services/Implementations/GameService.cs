@@ -99,8 +99,8 @@ namespace Diplom.Services.Implementations
         {
             try
             {
-                var game = _gameRepository?.GetAll().FirstOrDefault(x => x.Id == id);
-                var desc = _gameDescRepository?.GetAll().FirstOrDefault(y => y.GameId == game.Id);
+                var game =  await _gameRepository.GetAll().FirstOrDefaultAsync(x => x.Id == id);
+                var desc = await _gameDescRepository.GetAll().FirstOrDefaultAsync(y => y.GameId == game.Id);
 
                 var response = new GameViewModel
                 {

@@ -1,9 +1,30 @@
-﻿
+﻿@model List<Diplom.Models.Entity.Game>
 @{
     ViewData["Title"] = "Search";
 }
 
 <div style="padding-top: 40px; padding-bottom:40px">
-    <h1>Каталог игр</h1>
-</div>
+    <div>
+        <h1>Каталог игр</h1>
+    </div>
 
+    @foreach(var game in Model)
+    {
+        <div class="card mb-7" style=" margin-top:30px">
+            <div class="row g-0">
+                <div class="col">
+                     <a asp-controller="Game" asp-action="Game" asp-route-id="@game.Id">
+                        <img src="@game.ImgSource" class=" card-img-top rounded mycard" alt="..." style="height: 320px;width:225px">
+                    </a>
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h1 class="card-title">@game.Name</h1>
+                        <h2 class="card-text">@game.Price ₽</h2>
+                        <p class="card-text"><small class="text-muted">Дата выхода: @game.Date</small></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
