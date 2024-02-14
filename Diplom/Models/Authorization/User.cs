@@ -1,5 +1,6 @@
 ﻿using Diplom.Models.Entity;
 using Microsoft.AspNetCore.Identity;
+using System.ComponentModel.DataAnnotations;
 
 namespace Diplom.Models.Authorization
 {
@@ -8,6 +9,8 @@ namespace Diplom.Models.Authorization
         public int Id { get; set; }
         public string Name { get; set; }
         public string Password { get; set; }
+        [EmailAddress]
+        public string? Email { get; set; }
 
         public Role Role { get; set; }
 

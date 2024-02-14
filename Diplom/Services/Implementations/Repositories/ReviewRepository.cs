@@ -4,33 +4,33 @@ using Diplom.Services.Interfaces;
 
 namespace Diplom.Services.Implementations.Repositories
 {
-    public class ReviewRepository : IBaseRepository<Review>
+    public class GameReviewRepository : IBaseRepository<GameReview>
     {
         private readonly ApplicationDbContext _context;
 
-        public ReviewRepository(ApplicationDbContext context)
+        public GameReviewRepository(ApplicationDbContext context)
         {
             _context = context;
         }
 
-        public async Task Create(Review entity)
+        public async Task Create(GameReview entity)
         {
-            await _context.Reviews.AddAsync(entity);
+            await _context.GameReviews.AddAsync(entity);
             await _context.SaveChangesAsync();
         }
 
-        public IQueryable<Review> GetAll()
+        public IQueryable<GameReview> GetAll()
         {
-            return _context.Reviews;
+            return _context.GameReviews;
         }
 
-        public async Task Delete(Review entity)
+        public async Task Delete(GameReview entity)
         {
-            _context.Reviews.Remove(entity);
+            _context.GameReviews.Remove(entity);
             await _context.SaveChangesAsync();
         }
 
-        public async Task<Review> Update(Review entity)
+        public async Task<GameReview> Update(GameReview entity)
         {
             _context.Update(entity);
             await _context.SaveChangesAsync();

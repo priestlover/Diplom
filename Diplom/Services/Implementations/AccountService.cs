@@ -41,6 +41,7 @@ namespace Diplom.Services.Implementations
                     Name = model.Name,
                     Role = Role.User,
                     Password = HashPasswordHelper.HashPassword(model.Password),
+                    Email = model.Email
                 };
                 await _userRepository.Create(user);
 

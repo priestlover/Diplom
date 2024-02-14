@@ -18,5 +18,8 @@ namespace Diplom.ViewModels.Admin
         [Required(ErrorMessage = "Укажите пароль")]
         [Display(Name = "Пароль")]
         public string Password { get; set; }
+
+        [Display(Name = "Email")]
+        public string? Email { get; set; } = null;
     }
 }

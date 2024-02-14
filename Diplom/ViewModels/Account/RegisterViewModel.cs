@@ -19,5 +19,9 @@ namespace Diplom.ViewModels.Account
         [Compare("Password", ErrorMessage = "Пароли не совпадают")]
         public string PasswordConfirm { get; set;}
 
+        [Required(ErrorMessage ="Укажите почту")]
+        [EmailAddress]
+        public string Email { get; set; }
+
     }
 }

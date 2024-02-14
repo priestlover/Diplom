@@ -1,6 +1,7 @@
 ﻿using Diplom.Helpers;
 using Diplom.Models.Authorization;
 using Diplom.Models.Entity;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 
 namespace Diplom.AppDbContext
@@ -17,7 +18,8 @@ namespace Diplom.AppDbContext
         public DbSet<Basket> Baskets { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<GameDescription> GameDescriptions { get; set; }
-        public DbSet<Review> Reviews { get; set; }
+        public DbSet<GameReview> GameReviews { get; set; }
+        public DbSet<Tag> Tags { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -31,20 +33,22 @@ namespace Diplom.AppDbContext
                         Id = 1,
                         Name = "admin",
                         Password = HashPasswordHelper.HashPassword("bebra"),
-                        Role = Role.Admin
+                        Role = Role.Admin,
+                        Email = $"roman-maslov423@yandex.ru"
                     },
                     new User()
                     {
                         Id = 2,
                         Name = "testUser",
                         Password = HashPasswordHelper.HashPassword("12345"),
-                        Role = Role.User
+                        Role = Role.User,
+                        Email = $"roman-maslov423@yandex.ru"
                     }
                 });
                 builder.Property(x => x.Id).ValueGeneratedOnAdd();
                 builder.Property(x => x.Password).IsRequired();
                 builder.Property(x => x.Name).HasMaxLength(100).IsRequired();
-
+                
 
                 builder.HasOne(x => x.Basket)
                 .WithOne(x => x.User)
@@ -82,6 +86,14 @@ namespace Diplom.AppDbContext
                 .WithOne(x => x.Game)
                 .HasPrincipalKey<Game>(x => x.Id)
                 .OnDelete(DeleteBehavior.Cascade);
+
+                builder.HasMany(x => x.Tags)
+                .WithMany(p => p.Games);
+
+                builder.HasMany(x => x.gameReviews)
+                .WithOne(x => x.Game)
+                .HasForeignKey(x => x.GameId).IsRequired();
+              
             }
             );
 
@@ -91,11 +103,15 @@ namespace Diplom.AppDbContext
                 builder.ToTable("GameDescriptions").HasKey(x => x.Id);
             });
 
-
-            modelBuilder.Entity<Review>(builder => { 
-            builder.ToTable("Reviews").HasKey(x => x.Id);
+            modelBuilder.Entity<Tag>(builder =>
+            {
+                builder.ToTable("Tags").HasKey(x => x.TagId);
             });
 
+            modelBuilder.Entity<GameReview>(builder =>
+            {
+                builder.ToTable("GameReviews").HasKey(x => x.Id);
+            });
         }
     }
 }

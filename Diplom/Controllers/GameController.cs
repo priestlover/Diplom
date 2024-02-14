@@ -39,5 +39,7 @@ namespace Diplom.Controllers
 
             return RedirectToAction("Privacy","Home");
         }
+
+        public IActionResult AddGame() => View();
     }
 }

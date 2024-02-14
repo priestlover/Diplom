@@ -42,6 +42,7 @@ namespace Diplom.Services.Implementations.Admin
                     Name = model.Name,
                     Role = Enum.Parse<Role>(model.Role),
                     Password = HashPasswordHelper.HashPassword(model.Password),
+                    Email = model.Email
                 };
 
                 await _userRepository.Create(user);
@@ -142,6 +143,7 @@ namespace Diplom.Services.Implementations.Admin
                         Id = x.Id,
                         Name = x.Name,
                         Role = x.Role.ToString(),
+                        Email = x.Email
                     })
                     .ToListAsync();
                 _logger.LogInformation($"[UserService.GetUsers] получено элементов {users.Count}");

@@ -14,7 +14,7 @@ namespace Diplom
             services.AddScoped<IBaseRepository<User>, UserRepository>();
             services.AddScoped<IBaseRepository<Basket>, BasketRepository>();
             services.AddScoped<IBaseRepository<Order>, OrderRepository>();
-            services.AddScoped<IBaseRepository<Review>,ReviewRepository>();
+            services.AddScoped<IBaseRepository<GameReview>,GameReviewRepository>();
             services.AddScoped<IBaseRepository<Game>, GameRepository>();
             services.AddScoped<IBaseRepository<GameDescription>, GameDescriptionRepository>();
         }
