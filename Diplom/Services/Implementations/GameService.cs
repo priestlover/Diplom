@@ -27,6 +27,34 @@ namespace Diplom.Services.Implementations
             _logger = logger;
         }
 
+        public async Task<IBaseResponse<IEnumerable<Game>>> GetAll()
+        {
+            try
+            {
+                var response = await _gameRepository.GetAll().ToListAsync();
+
+                return new BaseResponse<IEnumerable<Game>>()
+                {
+                    Data = response,
+                    StatusCode = StatusCode.OK,
+                };
+            }
+            catch (Exception ex)
+            {
+                return new BaseResponse<IEnumerable<Game>>()
+                {
+                    Description = ex.Message,
+                    StatusCode = StatusCode.InternalServerError
+                };
+
+            }
+        }
+
+
+
+
+
+
         public async Task<IBaseResponse<bool>> AddToBasket(string userName, int gameId)
         {
             try

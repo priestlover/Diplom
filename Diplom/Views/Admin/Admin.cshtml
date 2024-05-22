@@ -4,11 +4,16 @@
 
     <div class="text-start" style="padding-top:50px">
         <button  type="button" class="btn btn-outline-dark me-2" style="width: 200px; height:100px">
-            <a class="px-2 text-black" style="text-decoration:none" asp-controller="User" asp-action="GetUsers">Пользователи</a>
+            <a class="px-2 text-black" style="text-decoration:none" asp-controller="Admin" asp-action="GetUsers">Пользователи</a>
         </button>
     </div>
     <div class="text-start" style="padding-top:50px">
         <button type="button" class="btn btn-outline-dark me-2" style="width: 200px; height:100px">
-           <a class="px-2 text-black" style="text-decoration:none" asp-controller="Game" asp-action="AddGame">Добавить игру</a>
+           <a class="px-2 text-black" style="text-decoration:none" asp-controller="Admin" asp-action="Games">Игры</a>
         </button>
+    </div>
+    <div class="text-start" style="padding-top:50px">
+         <button type="button" class="btn btn-outline-dark me-2" style="width: 200px; height:100px">
+              <a class="px-2 text-black" style="text-decoration:none" asp-controller="Account" asp-action="Register">Добавить пользователя</a>
+         </button>
     </div>

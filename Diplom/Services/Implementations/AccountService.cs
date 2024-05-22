@@ -35,11 +35,11 @@ namespace Diplom.Services.Implementations
                         Description = "Пользователь с таким логином уже есть",
                     };             
                 }
-
+                Enum.TryParse<Role>(model.Role, out Role bebra);
                 user = new User()
                 {
                     Name = model.Name,
-                    Role = Role.User,
+                    Role = bebra,
                     Password = HashPasswordHelper.HashPassword(model.Password),
                     Email = model.Email
                 };

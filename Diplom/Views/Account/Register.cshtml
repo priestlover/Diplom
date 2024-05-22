@@ -9,31 +9,34 @@
     <div class="row">
         <div class="col-md-12">
             <div class="row justify-content-center">
-                <div class="col-md-10">
+                <div class="col-md-10" style="width:50%">
                     <span class="anchor"></span>
                     <div class="card card-account card-outline-secondary border border-white">
                         <div class="card-header">
-                            <h3 class="mb-0 text-center paragraphHome text-black">Регистрация</h3>
+                            <h3 class="mb-0 text-center ParagraphHome text-black">Зарегестрироваться</h3>
                         </div>
                         <div class="card-body">
                             <form asp-controller="Account" asp-action="Register">
                                 <div asp-validation-summary="All" style="font-size:23px; font-family:Impact" class="text-danger text-center"></div>
                                 <div class="form-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
                                     <input asp-for="Name" class="form-control textbox-dg font-weight-bold text-center" placeholder="Имя" type="text">
                                 </div>
-                                <div class="form-group">
+                                <div class="form-group" style="margin-top:10px">
                                     <input autocomplete="new-password" asp-for="Password" placeholder="Пароль" class="form-control textbox-dg font-weight-bold text-center" type="password">
                                 </div>
-                                <div class="form-group">
+                                <div class="form-group" style="margin-top:10px">
                                     <input autocomplete="new-password" asp-for="PasswordConfirm" placeholder="Подтвердите пароль" class="form-control textbox-dg font-weight-bold text-center" type="password">
                                 </div>
-                                <div class="form-group">
+                                <div class="form-group" style="margin-top:10px">
                                     <input asp-for="Email" class="form-control textbox-dg font-weight-bold text-center" placeholder="Email" type="email">
                                 </div>
-                                <div>
-                                    <h2 class="paragraphHome text-center"><a asp-controller="Account" target="_blank" asp-action="Login" style="color:deepskyblue;">Вход</a></h2>
+                                <div class="form-group" style="margin-top:10px">
+                                    <input autocomplete="new-password" asp-for="Role" placeholder="Роль" class="form-control textbox-dg font-weight-bold text-center" type="text">
                                 </div>
-                                <button class="btn btn-success btn-lg float-right" type="submit">Отправить</button>
+                                <div class="d-grid gap-2 d-md-block" style="margin-top: 15px">
+                                    <button class="btn btn-success" style="margin-left:40%">Отправить</button>
+                                </div>
                             </form>
                         </div>
                     </div>

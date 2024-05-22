@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Diplom.ViewModels;
 using Diplom.Models.Authorization;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using Diplom.Services.Implementations;
 
 namespace Diplom.Controllers
 {
@@ -40,6 +41,5 @@ namespace Diplom.Controllers
             return RedirectToAction("Privacy","Home");
         }
 
-        public IActionResult AddGame() => View();
     }
 }

@@ -35,14 +35,6 @@ namespace Diplom.AppDbContext
                         Password = HashPasswordHelper.HashPassword("bebra"),
                         Role = Role.Admin,
                         Email = $"roman-maslov423@yandex.ru"
-                    },
-                    new User()
-                    {
-                        Id = 2,
-                        Name = "testUser",
-                        Password = HashPasswordHelper.HashPassword("12345"),
-                        Role = Role.User,
-                        Email = $"roman-maslov423@yandex.ru"
                     }
                 });
                 builder.Property(x => x.Id).ValueGeneratedOnAdd();
@@ -93,7 +85,6 @@ namespace Diplom.AppDbContext
                 builder.HasMany(x => x.gameReviews)
                 .WithOne(x => x.Game)
                 .HasForeignKey(x => x.GameId).IsRequired();
-              
             }
             );
 

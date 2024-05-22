@@ -23,5 +23,8 @@ namespace Diplom.ViewModels.Account
         [EmailAddress]
         public string Email { get; set; }
 
+        [RegularExpression(@"Admin|User")]
+        public string Role { get; set; } = "User";
+
     }
 }

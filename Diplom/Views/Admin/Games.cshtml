@@ -1,0 +1,46 @@
+﻿@model IEnumerable<Diplom.Models.Entity.Game>
+@{
+    ViewData["Title"] = "Games";
+    Layout = "_Layout";
+}
+
+
+<div style="padding: 10px;"></div>
+<div class="card col-md-12">
+    <table class="table table-striped">
+        <thead class="table-light">
+            <tr>
+                <th scope="col">Название</th>
+                <th scope="col">Цена</th>
+                <th scope="col">Дата</th>
+                <th scope="col">#</th>
+                <th scope="col">#</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var game in @Model)
+            {
+                <tr>
+                    <td>@game.Name</td>
+                    <td>@game.Price</td>
+                    <td>@game.Date</td>
+                    <td>
+                        <form asp-controller="Admin" asp-action="UpdateGame" asp-route-id="@game.Id" method="post">
+                            <button type="submit" class="btn btn-sm btn-success">
+                                Изменить
+                            </button>
+                        </form>
+                    </td>
+                    <td>
+                        <form asp-controller="Admin" asp-action="DeleteGame" asp-route-id="@game.Id" method="post">
+                            <button type="submit" class="btn btn-sm btn-danger">
+                                Удалить
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
