@@ -31,9 +31,11 @@
                                 <div class="form-group" style="margin-top:10px">
                                     <input asp-for="Email" class="form-control textbox-dg font-weight-bold text-center" placeholder="Email" type="email">
                                 </div>
+                                @if(User.IsInRole("Admin")){
                                 <div class="form-group" style="margin-top:10px">
-                                    <input autocomplete="new-password" asp-for="Role" placeholder="Роль" class="form-control textbox-dg font-weight-bold text-center" type="text">
+                                    <input asp-for="Role" placeholder="Роль" class="form-control textbox-dg font-weight-bold text-center" type="text">
                                 </div>
+                                }
                                 <div class="d-grid gap-2 d-md-block" style="margin-top: 15px">
                                     <button class="btn btn-success" style="margin-left:40%">Отправить</button>
                                 </div>
