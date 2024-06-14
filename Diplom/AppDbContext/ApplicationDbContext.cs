@@ -82,9 +82,6 @@ namespace Diplom.AppDbContext
                 builder.HasMany(x => x.Tags)
                 .WithMany(p => p.Games);
 
-                builder.HasMany(x => x.gameReviews)
-                .WithOne(x => x.Game)
-                .HasForeignKey(x => x.GameId).IsRequired();
             }
             );
 

@@ -23,7 +23,7 @@
                 <tr>
                     <td>@game.Name</td>
                     <td>@game.Price</td>
-                    <td>@game.Date</td>
+                    <td>@game.Date.ToShortDateString()</td>
                     <td>
                         <form asp-controller="Admin" asp-action="UpdateGame" asp-route-id="@game.Id" method="post">
                             <button type="submit" class="btn btn-sm btn-success">

@@ -1,6 +1,8 @@
 ﻿using Diplom.Services.Interfaces;
+using Diplom.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace Diplom.Controllers
 {
@@ -62,6 +64,42 @@ namespace Diplom.Controllers
                 return RedirectToAction("Games");
             }
 
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult AddGame() => View();
+
+        public async Task<IActionResult> AddGameToDb(GameViewModel game)
+        {
+            var response = await _gameService.AddGame(game);
+
+            if(response.StatusCode == Models.Authorization.StatusCode.OK) 
+            {
+                return RedirectToAction("Admin");
+            }
+            return RedirectToAction("Index");
+        }
+
+        public async Task<IActionResult> UpdateGame(int id)
+        {
+            var response = await _gameService.GetGame(id);
+
+            if(response.StatusCode == Models.Authorization.StatusCode.OK)
+            {
+                return View(response.Data);
+            }
+            return RedirectToAction("Index");
+        }
+
+        public async Task<IActionResult> UpdateGameToDb(int gameId,GameViewModel game)
+        {
+            game.Id = gameId;
+            var response = await _gameService.UpdateGame(game);
+
+            if (response.StatusCode == Models.Authorization.StatusCode.OK)
+            {
+                return RedirectToAction("Admin");
+            }
             return RedirectToAction("Index");
         }
 

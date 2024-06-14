@@ -16,6 +16,7 @@ namespace Diplom
             services.AddScoped<IBaseRepository<Order>, OrderRepository>();
             services.AddScoped<IBaseRepository<GameReview>,GameReviewRepository>();
             services.AddScoped<IBaseRepository<Game>, GameRepository>();
+            services.AddScoped<IBaseRepository<Tag>, TagRepository>();
             services.AddScoped<IBaseRepository<GameDescription>, GameDescriptionRepository>();
         }
 
@@ -26,6 +27,7 @@ namespace Diplom
             services.AddScoped<IGameService, GameService>();
             services.AddScoped<IBasketService, BasketService>();
             services.AddScoped<ISearchService, SearchService>();
+            services.AddScoped<IEmailService, EmailService>();
         }
     }
 }

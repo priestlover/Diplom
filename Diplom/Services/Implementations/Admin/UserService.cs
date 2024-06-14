@@ -133,6 +133,31 @@ namespace Diplom.Services.Implementations.Admin
 
             }
         }
+
+        public async Task<IBaseResponse<string>> GetUserEmail(string userName)
+        {
+            try
+            {
+                var user = await _userRepository.GetAll()
+                    .FirstOrDefaultAsync(x => x.Name == userName);
+
+                return new BaseResponse<string>()
+                {
+                    Data = user.Email,
+                    StatusCode = StatusCode.OK,
+                };
+
+            }
+            catch(Exception ex)
+            {
+                return new BaseResponse<string>()
+                {
+                    StatusCode = StatusCode.InternalServerError ,
+                    Description = ex.Message
+                };
+            }
+        }
+
         public async Task<IBaseResponse<IEnumerable<UserViewModel>>> GetUsers()
         {
             try

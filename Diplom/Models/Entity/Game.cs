@@ -12,6 +12,5 @@
 
         public ICollection<Tag> Tags { get; set; }
 
-        public ICollection<GameReview> gameReviews { get; set; }
     }
 }

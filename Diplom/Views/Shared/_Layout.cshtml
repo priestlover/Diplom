@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Diplom</title>
+    <title>@ViewData["Title"] - Top Nervy</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
     <link href="https://raw.githack.com/ttskch/select2-bootstrap4-theme/master/dist/select2-bootstrap4.css" rel="stylesheet">
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
@@ -20,6 +20,26 @@
                 <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
                     <li><a class="nav-link px-2 text-black" asp-controller="Home" asp-action="Index">Главная</a></li>
                     <li><a class="nav-link px-2 text-black" asp-controller="Search" asp-action="Catalog">Каталог игр</a></li>
+                    <li>
+                        <div class="dropdown">
+                            <button class="dropbtn bg-light">Категории</button>
+                            <div class="dropdown-content">
+                                <a class="nav-link px-2 text-black" asp-controller="Search" asp-action="Tags" asp-route-tag="MMORPG">MMORPG</a>
+                                <a class="nav-link px-2 text-black" asp-controller="Search" asp-action="Tags" asp-route-tag="MOBA">MOBA</a>
+                                <a class="nav-link px-2 text-black" asp-controller="Search" asp-action="Tags" asp-route-tag="RPG">RPG</a>
+                                <a class="nav-link px-2 text-black" asp-controller="Search" asp-action="Tags" asp-route-tag="Аркады">Аркады</a>
+                                <a class="nav-link px-2 text-black" asp-controller="Search" asp-action="Tags" asp-route-tag="Гонки">Гонки</a>
+                                <a class="nav-link px-2 text-black" asp-controller="Search" asp-action="Tags" asp-route-tag="Платформеры">Платформеры</a>
+                                <a class="nav-link px-2 text-black" asp-controller="Search" asp-action="Tags" asp-route-tag="Приключения">Приключения</a>
+                                <a class="nav-link px-2 text-black" asp-controller="Search" asp-action="Tags" asp-route-tag="Симуляторы">Симуляторы</a>
+                                <a class="nav-link px-2 text-black" asp-controller="Search" asp-action="Tags" asp-route-tag="Стратегии">Стратегии</a>
+                                <a class="nav-link px-2 text-black" asp-controller="Search" asp-action="Tags" asp-route-tag="Файтинги">Файтинги</a>
+                                <a class="nav-link px-2 text-black" asp-controller="Search" asp-action="Tags" asp-route-tag="Хорроры">Хорроры</a>
+                                <a class="nav-link px-2 text-black" asp-controller="Search" asp-action="Tags" asp-route-tag="Шутеры">Шутеры</a>
+                                <a class="nav-link px-2 text-black" asp-controller="Search" asp-action="Tags" asp-route-tag="Экшен">Экшен</a>
+                            </div>
+                        </div>
+                    </li>
                 </ul>
                 @if(User.IsInRole("Admin")){
                     <div class="text-end">
@@ -30,7 +50,7 @@
                 }
                 <div style="margin-right:20px">
                      <form asp-controller="Search" asp-action="Search" method="get">
-                        <input type="search" name="searchStr" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+                        <input autocomplete="off" type="search" name="searchStr" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
                         
                      </form>
                  </div>

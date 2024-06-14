@@ -9,5 +9,7 @@ namespace Diplom.Services.Interfaces
         Task<IBaseResponse<bool>> DeleteGame(int id);
         Task<IBaseResponse<bool>> AddToBasket(string userName, int gameId);
         Task<IBaseResponse<IEnumerable<Game>>> GetAll();
+        Task<IBaseResponse<bool>> AddGame(GameViewModel game);
+        Task<IBaseResponse<bool>> UpdateGame(GameViewModel game);
     }
 }

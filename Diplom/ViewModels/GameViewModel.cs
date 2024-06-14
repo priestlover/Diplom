@@ -1,4 +1,6 @@
-﻿namespace Diplom.ViewModels
+﻿using Diplom.Models.Entity;
+
+namespace Diplom.ViewModels
 {
     public class GameViewModel
     {
@@ -13,5 +15,8 @@
         public DateTime Date { get; set; }
 
         public string Description { get; set; }
+
+        public string? Tags { get; set; }
+
     }
 }

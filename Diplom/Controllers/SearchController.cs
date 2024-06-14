@@ -35,5 +35,15 @@ namespace Diplom.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+        public async Task<IActionResult> Tags(string tag)
+        {
+            var response = await _searchService.Tag(tag);
+
+            if(response.StatusCode == Models.Authorization.StatusCode.OK)
+            {
+                return View("Search", response.Data.ToList());
+            }
+            return RedirectToAction("Index", "Home");
+        }
     }
 }

@@ -18,7 +18,6 @@
                 <div class="card-body">
                     <h5 class="card-title">@game.Name</h5>
                     <h4 class="card-text">@game.Price ₽</h4>
-                    <p class="card-text"><small class="text-muted">Дата заказа:  @game.CreatedDate.Value.ToShortTimeString() @game.CreatedDate.Value.ToShortDateString()</small></p>
                     <button type="button" class="btn btn-outline-danger" >
                         <a class="px-2 text-black" style="text-decoration:none" asp-controller="Basket" asp-action="DeleteOrder" asp-route-id="@game.Id">Удалить</a>
                     </button>
@@ -31,11 +30,12 @@
 <div class="justify-content-start" style="margin-top:40px">
         <h2>Итого: @Model.Sum(x => x.Price) ₽</h2>
 </div>
-    <div>
-
-        <button>
-            <a>Оформить заказ</a>
-        </button>
-    </div>
-
+    @if (Model.Sum(x => x.Price) > 0)
+    {
+        <div>
+            <button type="button" class="btn btn-outline-success">
+                <a class="px-2 text-black" style="text-decoration:none" asp-controller="Basket" asp-action="Order" asp-route-orders="@Model">Оформить заказ</a>
+            </button>
+        </div>
+    }
 </div>

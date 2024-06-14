@@ -8,66 +8,66 @@
         <h1>Купить ключи игр Steam для ПК</h1>
     </div>
         <div class="fade show active">
-                @for(int i = 0; i < 1; i++)
+                @for(int i = 0; i < Model.Count/4; i++)
                 {
                     <div class="card-group" style=" margin-bottom: 50px;">
 
-                        <div class="card">
-                            <div class="text-center" style="height:70%">
-                        <a asp-controller="Game" asp-action="Game" asp-route-id ="@Model[0 + i * 4].Id">
-                                    <img src="@Model[0 + i * 4].ImgSource" class="card-img-top rounded mycard" alt="...">
-                                </a>
-                            </div>
-                            <div class="card-body">
-                                <a class="text-decoration-none text-black">
-                                    <h2 class="card-title"> @Model[0 + i * 4].Name</h2>
-                                </a>
-                                <h4 class="card-text">@Model[0 + i * 4].Price ₽</h4>
-                            </div>
-                        </div>
-
-                    <div class="card">
-                        <div class="text-center" style="height:70%">
-                            <a asp-controller="Game" asp-action="Game" asp-route-id="@Model[0].Id">
-                                <img src="@Model[0].ImgSource" class="card-img-top rounded mycard" alt="...">
-                            </a>
-                        </div>
-                        <div class="card-body">
-                            <a class="text-decoration-none text-black">
-                                <h2 class="card-title"> @Model[0].Name</h2>
-                            </a>
-                            <h4 class="card-text">@Model[0].Price ₽</h4>
-                        </div>
+                <div class="card">
+                    <div class="text-center" style="height:70%">
+                        <a asp-controller="Game" asp-action="Game" asp-route-id="@Model[i*4].Id">
+                            <img src="@Model[i*4].ImgSource" class="card-img-top rounded mycard" alt="...">
+                        </a>
                     </div>
-
-                    <div class="card">
-                            <div class="text-center" style="height:70%">
-                        <a asp-controller="Game" asp-action="Game" asp-route-id ="@Model[0].Id">
-                                    <img src="@Model[0].ImgSource" class="card-img-top rounded mycard" alt="...">
-                                </a>
-                            </div>
-                            <div class="card-body">
-                                <a class="text-decoration-none text-black">
-                                    <h2 class="card-title"> @Model[0].Name</h2>
-                                </a>
-                                <h4 class="card-text">@Model[0].Price ₽</h4>
-                            </div>
+                    <div class="card-body">
+                        <a class="text-decoration-none text-black">
+                            <h2 class="card-title"> @Model[i*4].Name</h2>
+                        </a>
+                        <h4 class="card-text">@Model[i*4].Price ₽</h4>
                     </div>
-
-                    <div class="card">
-                            <div class="text-center" style="height:70%">
-                        <a asp-controller="Game" asp-action="Game" asp-route-id ="@Model[0].Id">
-                                    <img src="@Model[0].ImgSource" class="card-img-top rounded mycard" alt="...">
-                                </a>
-                            </div>
-                            <div class="card-body">
-                                <a class="text-decoration-none text-black">
-                                    <h2 class="card-title"> @Model[0].Name</h2>
-                                </a>
-                                <h4 class="card-text">@Model[0].Price ₽</h4>
-                            </div>
+                </div>
+               
+                <div class="card">
+                    <div class="text-center" style="height:70%">
+                        <a asp-controller="Game" asp-action="Game" asp-route-id="@Model[i*4 +1].Id">
+                            <img src="@Model[i*4 +1].ImgSource" class="card-img-top rounded mycard" alt="...">
+                        </a>
                     </div>
-
+                    <div class="card-body">
+                        <a class="text-decoration-none text-black">
+                            <h2 class="card-title"> @Model[i * 4 + 1].Name</h2>
+                        </a>
+                        <h4 class="card-text">@Model[i * 4 + 1].Price ₽</h4>
+                    </div>
+                </div>
+               
+                <div class="card">
+                    <div class="text-center" style="height:70%">
+                        <a asp-controller="Game" asp-action="Game" asp-route-id="@Model[i*4 + 2].Id">
+                            <img src="@Model[i*4 + 2].ImgSource" class="card-img-top rounded mycard" alt="...">
+                        </a>
+                    </div>
+                    <div class="card-body">
+                        <a class="text-decoration-none text-black">
+                            <h2 class="card-title"> @Model[i * 4 +2].Name</h2>
+                        </a>
+                        <h4 class="card-text">@Model[i * 4 +2 ].Price ₽</h4>
+                    </div>
+                </div>
+               
+                <div class="card">
+                          <div class="text-center" style="height:70%">
+                        <a asp-controller="Game" asp-action="Game" asp-route-id="@Model[i*4 +3].Id">
+                            <img src="@Model[i*4 +3].ImgSource" class="card-img-top rounded mycard" alt="...">
+                                </a>
+                          </div>
+                          <div class="card-body">
+                                 <a class="text-decoration-none text-black">
+                            <h2 class="card-title"> @Model[i * 4 + 3].Name</h2>
+                                 </a>
+                        <h4 class="card-text">@Model[i * 4 +3].Price ₽</h4>
+                          </div>
+                </div>
+                   
                     </div>
                 }
         </div>

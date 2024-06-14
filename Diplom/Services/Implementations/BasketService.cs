@@ -3,6 +3,9 @@ using Diplom.Models.Entity;
 using Diplom.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using Diplom.ViewModels;
+using Diplom.Helpers;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
+using System.Text;
 
 namespace Diplom.Services.Implementations
 {
@@ -93,6 +96,79 @@ namespace Diplom.Services.Implementations
                     Description = ex.Message
                 };
             }
+        }
+
+        public async Task<IBaseResponse<bool>> DeleteAllOrders(string userName)
+        {
+            try
+            {
+                var user = await _userRepository.GetAll()
+                                 .Include(x => x.Basket)
+                                 .ThenInclude(x => x.Orders)
+                                 .FirstOrDefaultAsync(x => x.Name == userName);
+                var orders = user.Basket.Orders;
+
+                for(int i = 0; orders.Count != 0; )
+                {
+                    await _orderRepository.Delete(orders[i]);
+                }
+
+                return new BaseResponse<bool>
+                {
+                    StatusCode = StatusCode.OK,
+                    Data = true,
+                };
+            }
+            catch(Exception ex)
+            {
+                return new BaseResponse<bool>
+                {
+                    StatusCode = StatusCode.InternalServerError,
+                    Description = ex.Message
+                };
+            }
+        }
+
+        public async Task<IBaseResponse<string>> GetStringOrder(string userName)
+        {
+            try
+            {
+                var user = await _userRepository.GetAll()
+                        .Include(x => x.Basket)
+                        .ThenInclude(x => x.Orders)
+                        .FirstOrDefaultAsync(x => x.Name == userName);
+
+                var orders = from o in user.Basket?.Orders
+                               join g in _gameRepository.GetAll() on o.GameId equals g.Id
+                               select new OrderViewModel()
+                               {
+                                   Id = o.Id,
+                                   Name = g.Name,
+                                   ImgSource = g.ImgSource,
+                                   CreatedDate = o.CreatedDate,
+                                   Price = g.Price
+                               };
+                string response = string.Empty;
+                foreach (var order in orders)
+                {
+                    response += order.Name + " - " + KeyGenerator.GenerateKey() + "\n";
+                }
+
+                return new BaseResponse<string>()
+                {
+                    StatusCode = StatusCode.OK,
+                    Data = response
+                };
+            }
+            catch (Exception ex)
+            {
+                return new BaseResponse<string>()
+                {
+                    StatusCode = StatusCode.InternalServerError,
+                    Description = ex.Message
+                };
+            }
+
         }
     }
 }
